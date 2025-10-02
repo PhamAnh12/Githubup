@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To‑Do — Minimal, Fast, Beautiful fixxx</title>
+  <link rel="icon" href="data:,"/>
+  <style>
+    :root{
+      --bg:#0b0c10; --panel:#111318; --muted:#8b91a1; --text:#e7eaf1; --primary:#5ac8fa; --accent:#8a5cf6; --success:#34d399; --danger:#ef4444; --warning:#f59e0b; --outline:#1f2430; --chip:#1a1f2b;
+    }
+    [data-theme="light"]{ --bg:#f6f7fb; --panel:#ffffff; --muted:#6b7280; --text:#111827; --primary:#2563eb; --accent:#8b5cf6; --success:#059669; --danger:#dc2626; --warning:#d97706; --outline:#e5e7eb; --chip:#f3f4f6; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,"Helvetica Neue",Arial,sans-serif}
+    .wrap{max-width:960px;margin:auto;padding:24px}
+    header{display:flex;gap:16px;justify-content:space-between;align-items:center;margin-bottom:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    h1{font-size:22px;margin:0;letter-spacing:.2px}
+    .actions{display:flex;align-items:center;gap:8px}
+    button, .btn{appearance:none;border:1px solid var(--outline);background:var(--panel);color:var(--text);padding:10px 12px;border-radius:12px;font-weight:600;cursor:pointer;transition:.2s;display:inline-flex;gap:8px;align-items:center}
+    button:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.2)}
+    .ghost{background:transparent}
+    .pill{border-radius:999px}
+    .primary{background:linear-gradient(135deg,var(--primary),var(--accent));border-color:transparent;color:white}
+    .danger{border-color:transparent;background:linear-gradient(135deg,var(--danger),#f87171);color:white}
+    .panel{background:var(--panel);border:1px solid var(--outline);border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+
+    .toolbar{display:grid;grid-template-columns:1fr auto auto;gap:10px;padding:14px}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .input{display:flex;align-items:center;gap:10px;background:var(--chip);border:1px solid var(--outline);border-radius:12px;padding:10px 12px;flex:1;min-width:240px}
+    .input input,.input select,.input input[type="date"]{border:none;outline:none;background:transparent;color:var(--text);width:100%;font:inherit}
+    .input input::placeholder{color:var(--muted)}
+    .kbd{font:12px/1.2 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--panel);border:1px solid var(--outline);border-bottom-width:3px;border-radius:8px;padding:2px 6px;color:var(--muted)}
+
+    .stats{display:flex;gap:12px;flex-wrap:wrap;padding:10px 14px;border-top:1px dashed var(--outline);color:var(--muted)}
+    .chip{display:inline-flex;align-items:center;gap:8px;background:var(--chip);border:1px solid var(--outline);padding:8px 10px;border-radius:999px}
+
+    .list{margin-top:16px}
+    .task{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--outline)}
+    .task:last-child{border-bottom:none}
+    .task.dragging{opacity:.5}
+    .task input[type="checkbox"]{width:18px;height:18px}
+    .title{display:flex;align-items:center;gap:10px}
+    .task .text{outline:none}
+    .task.completed .text{text-decoration:line-through;color:var(--muted)}
+    .badge{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid var(--outline);background:var(--panel)}
+    .priority-low{color:var(--muted)}
+    .priority-med{background:linear-gradient(135deg,#10b98130,#10b98115)}
+    .priority-high{background:linear-gradient(135deg,#ef444430,#ef444415)}
+    .due{font-size:12px;color:var(--muted)}
+    .task .icons{display:flex;gap:6px}
+    .icon{width:36px;height:36px;border-radius:10px;border:1px solid var(--outline);background:var(--panel);display:grid;place-items:center;cursor:pointer}
+    .icon:hover{transform:translateY(-1px)}
+
+    .filters{display:flex;gap:6px;flex-wrap:wrap}
+    .filters .btn[aria-pressed="true"]{background:var(--panel);border-color:var(--primary);box-shadow:0 0 0 2px color-mix(in lab, var(--primary) 25%, transparent) inset}
+
+    footer{margin-top:28px;display:flex;justify-content:space-between;align-items:center;color:var(--muted)}
+    .credit a{color:inherit}
+    .hide{display:none !important}
+
+    @media (max-width:680px){
+      .toolbar{grid-template-columns:1fr}
+      .task{grid-template-columns: auto 1fr}
+      .task .icons{grid-column: 1 / -1}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>To‑Do</h1>
+        <span class="kbd" title="Focus quick add">/</span>
+        <span class="kbd" title="Search">Ctrl/⌘ K</span>
+      </div>
+      <div class="actions">
+        <button id="themeBtn" class="ghost" title="Toggle theme" aria-pressed="false">🌗</button>
+        <button id="exportBtn" class="ghost" title="Export tasks JSON">⬇️ Export</button>
+        <button id="importBtn" class="ghost" title="Import tasks JSON">⬆️ Import</button>
+        <input id="importFile" class="hide" type="file" accept="application/json" />
+      </div>
+    </header>
+
+    <section class="panel">
+      <div class="toolbar">
+        <div class="row">
+          <div class="input" title="Add a task">
+            <span>➕</span>
+            <input id="newTask" placeholder="What needs to be done?" autocomplete="off" />
+          </div>
+          <div class="input" style="max-width:180px">
+            <input id="dueDate" type="date" />
+          </div>
+          <div class="input" style="max-width:160px">
+            <select id="priority">
+              <option value="med">Priority: Medium</option>
+              <option value="high">Priority: High</option>
+              <option value="low">Priority: Low</option>
+            </select>
+          </div>
+          <button id="addBtn" class="primary pill">Add</button>
+        </div>
+        <div class="row">
+          <div class="input" title="Search (Ctrl/⌘+K)">
+            <span>🔎</span>
+            <input id="search" placeholder="Search tasks…" />
+          </div>
+          <div class="filters" role="tablist" aria-label="Filters">
+            <button class="btn pill" data-filter="all" aria-pressed="true">All</button>
+            <button class="btn pill" data-filter="active">Active</button>
+            <button class="btn pill" data-filter="completed">Completed</button>
+            <button id="clearCompleted" class="btn pill danger">Clear Completed</button>
+          </div>
+        </div>
+      </div>
+      <div id="list" class="list" aria-live="polite"></div>
+      <div class="stats">
+        <span id="countChip" class="chip">🧮 <strong id="count">0</strong> total</span>
+        <span class="chip">✅ <strong id="done">0</strong> done</span>
+        <span class="chip">📌 <strong id="left">0</strong> left</span>
+      </div>
+    </section>
+
+    <footer>
+      <small class="credit">Made with ❤ — Offline‑ready (LocalStorage). Drag to reorder. Double‑click to edit. </small>
+      <small>Tips: Press <span class="kbd">/</span> to focus Add, <span class="kbd">Ctrl/⌘ K</span> to Search.</small>
+    </footer>
+  </div>
+
+  <template id="taskTmpl">
+    <div class="task" draggable="true">
+      <input class="check" type="checkbox" aria-label="Complete" />
+      <div class="title">
+        <span class="handle" title="Drag to reorder">⬍</span>
+        <div class="text" contenteditable="true" spellcheck="false"></div>
+        <span class="badge priority-badge"></span>
+      </div>
+      <div class="icons">
+        <span class="due"></span>
+        <span class="icon edit" title="Rename">✏️</span>
+        <span class="icon del" title="Delete">🗑️</span>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    (function(){
+      const $ = s => document.querySelector(s);
+      const $$ = s => Array.from(document.querySelectorAll(s));
+      const uid = () => Math.random().toString(36).slice(2,9);
+      const storeKey = 'todo-html-app-v1';
+
+      const state = {
+        tasks: [],
+        filter: 'all',
+        q: '',
+      };
+
+      const el = {
+        list: $('#list'),
+        count: $('#count'),
+        done: $('#done'),
+        left: $('#left'),
+        countChip: $('#countChip'),
+        tmpl: $('#taskTmpl'),
+        newTask: $('#newTask'),
+        addBtn: $('#addBtn'),
+        due: $('#dueDate'),
+        prio: $('#priority'),
+        search: $('#search'),
+        filters: $$('.filters .btn[data-filter]'),
+        clearCompleted: $('#clearCompleted'),
+        themeBtn: $('#themeBtn'),
+        exportBtn: $('#exportBtn'),
+        importBtn: $('#importBtn'),
+        importFile: $('#importFile'),
+      };
+
+      function save(){ localStorage.setItem(storeKey, JSON.stringify({tasks:state.tasks})); }
+      function load(){
+        try{ const raw = JSON.parse(localStorage.getItem(storeKey)||'{}'); state.tasks = raw.tasks || []; }
+        catch{ state.tasks = []; }
+      }
+
+      function fmtDate(iso){ if(!iso) return ''; const d=new Date(iso+'T00:00:00'); return d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'}); }
+
+      function render(){
+        el.list.innerHTML = '';
+        const frag = document.createDocumentFragment();
+        const q = state.q.trim().toLowerCase();
+        let visible = state.tasks
+          .filter(t => state.filter==='all' || (state.filter==='active'?!t.completed:t.completed))
+          .filter(t => !q || t.text.toLowerCase().includes(q));
+
+        for(const t of visible){
+          const node = el.tmpl.content.firstElementChild.cloneNode(true);
+          node.dataset.id = t.id;
+          node.classList.toggle('completed', !!t.completed);
+          node.querySelector('.check').checked = !!t.completed;
+          const text = node.querySelector('.text');
+          text.textContent = t.text;
+          const pr = node.querySelector('.priority-badge');
+          pr.textContent = t.priority.toUpperCase();
+          pr.classList.add('badge', t.priority==='high'?'priority-high':t.priority==='low'?'priority-low':'priority-med');
+          const due = node.querySelector('.due');
+          due.textContent = t.due ? '📅 '+fmtDate(t.due) : '';
+          frag.appendChild(node);
+        }
+        el.list.appendChild(frag);
+
+        const total = state.tasks.length; const done = state.tasks.filter(t=>t.completed).length; const left = total-done;
+        el.count.textContent = total; el.done.textContent = done; el.left.textContent = left;
+        el.countChip.classList.toggle('hide', total===0);
+      }
+
+      function addTask(){
+        const text = el.newTask.value.trim();
+        if(!text) return;
+        state.tasks.push({ id: uid(), text, completed:false, createdAt: Date.now(), due: el.due.value || '', priority: el.prio.value });
+        el.newTask.value=''; el.due.value=''; el.prio.value='med';
+        save(); render();
+      }
+
+      function setFilter(f){ state.filter=f; el.filters.forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.filter===f))); render(); }
+
+      function handleListClick(e){
+        const row = e.target.closest('.task'); if(!row) return; const id = row.dataset.id; const t = state.tasks.find(x=>x.id===id);
+        if(e.target.classList.contains('del')){ state.tasks = state.tasks.filter(x=>x.id!==id); save(); render(); }
+        else if(e.target.classList.contains('edit')){ row.querySelector('.text').focus(); document.execCommand && document.execCommand('selectAll',false,null); }
+        else if(e.target.classList.contains('check')){ t.completed = e.target.checked; save(); render(); }
+      }
+
+      function handleTextEdit(e){
+        const row = e.target.closest('.task'); if(!row) return; const id=row.dataset.id; const t=state.tasks.find(x=>x.id===id);
+        if(e.type==='blur'){ t.text = e.target.textContent.trim() || t.text; save(); render(); }
+        if(e.type==='keydown' && e.key==='Enter'){ e.preventDefault(); e.target.blur(); }
+      }
+
+      // Drag & Drop ordering
+      let dragId=null; let overId=null;
+      el.list.addEventListener('dragstart',e=>{ const row=e.target.closest('.task'); if(!row) return; dragId=row.dataset.id; row.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; });
+      el.list.addEventListener('dragend',e=>{ const row=e.target.closest('.task'); if(row) row.classList.remove('dragging'); dragId=null; overId=null; });
+      el.list.addEventListener('dragover',e=>{ e.preventDefault(); const row=e.target.closest('.task'); if(!row) return; overId=row.dataset.id; });
+      el.list.addEventListener('drop',e=>{ e.preventDefault(); if(!dragId||!overId||dragId===overId) return; const a=state.tasks.findIndex(t=>t.id===dragId); const b=state.tasks.findIndex(t=>t.id===overId); const [m]=state.tasks.splice(a,1); state.tasks.splice(b,0,m); save(); render(); });
+
+      el.addBtn.addEventListener('click', addTask);
+      el.newTask.addEventListener('keydown', e=>{ if(e.key==='Enter') addTask(); });
+      document.addEventListener('keydown', e=>{
+        if(e.key==='/'){ const ae=document.activeElement; if(ae && (ae.tagName==='INPUT' || ae.isContentEditable)) return; e.preventDefault(); el.newTask.focus(); }
+        if((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='k'){ e.preventDefault(); el.search.focus(); el.search.select(); }
+      });
+
+      el.search.addEventListener('input', e=>{ state.q=e.target.value; render(); });
+      el.filters.forEach(btn=> btn.addEventListener('click', ()=> setFilter(btn.dataset.filter)) );
+      el.clearCompleted.addEventListener('click', ()=>{ state.tasks = state.tasks.filter(t=>!t.completed); save(); render(); });
+
+      // Theme toggle
+      function applyTheme(t){ document.documentElement.setAttribute('data-theme', t); localStorage.setItem('todo-theme', t); el.themeBtn.setAttribute('aria-pressed', String(t==='light')); }
+      el.themeBtn.addEventListener('click', ()=>{ const cur=document.documentElement.getAttribute('data-theme')||'dark'; applyTheme(cur==='dark'?'light':'dark'); });
+
+      // Import/Export
+      el.exportBtn.addEventListener('click', ()=>{
+        const blob = new Blob([JSON.stringify({tasks:state.tasks},null,2)], {type:'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href=url; a.download='todos.json'; a.click(); URL.revokeObjectURL(url);
+      });
+      el.importBtn.addEventListener('click', ()=> el.importFile.click());
+      el.importFile.addEventListener('change', async (e)=>{
+        const file = e.target.files[0]; if(!file) return; const text = await file.text();
+        try{ const data = JSON.parse(text); if(Array.isArray(data)) state.tasks=data; else if (Array.isArray(data.tasks)) state.tasks=data.tasks; save(); render(); }
+        catch(err){ alert('Invalid JSON'); }
+        finally{ e.target.value=''; }
+      });
+
+      // Init
+      load();
+      applyTheme(localStorage.getItem('todo-theme')||'dark');
+      render();
+      el.newTask.focus();
+      // Accessibility: announce counts update
+      const ro = new ResizeObserver(()=>{}); ro.observe(el.list);
+    })();
+  </script>
+</body>
+</html>
