@@ -331,7 +331,7 @@
     <div class="container" style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;">
       <div>© <span id="y"></span> Trang Web Đẹp. All rights reserved.</div>
       <div>
-        <a href="#">Điều khoản</a> · <a href="#">Chính sách</a>
+        <a href="#">Điều khoản</a> · <a href="#">Chính hi aooooooooooooooassssách</a>
       </div>
     </div>
   </footer>
