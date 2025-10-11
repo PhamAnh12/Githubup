@@ -152,7 +152,7 @@
     <div class="container nav">
       <a class="brand" href="#">
         <span class="logo">✨</span>
-        <span>Trang Web Đẹp</span>
+        <span>Trang Web Đẹp ok đẹp lắm</span>
       </a>
       <nav>
         <button class="menu-toggle" aria-label="Mở menu" title="Menu">☰</button>
