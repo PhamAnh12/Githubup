@@ -218,7 +218,7 @@ okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
         </article>
         <article class="feature">
           <span class="tag">Responsive</span>
-          <h3>Hiển thị mọi thiết bị</h3>
+          <h3>Hiển thị mọi thiết bị ok hiện thị</h3>
           <p>Tự động co giãn trên di động, máy tính bảng và màn hình lớn.</p>
         </article>
         <article class="feature">
