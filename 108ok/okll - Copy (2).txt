@@ -204,6 +204,28 @@
     </div>
   </section>
 
+Got it! 😊 Since you're exploring crypto futures, here are your next logical steps:
+
+📈 Continue the Futures Deep Dive
+"What is 'funding rate' in perpetual futures, and how does it impact traders?"
+(We just touched on this—want the full mechanics?)
+"How do liquidation mechanisms work in leveraged futures positions?"
+(Critical for avoiding $0 accounts!)
+"Why are crypto futures more volatile than traditional futures markets?"
+🔒 Or Switch to Safety First
+Given the risks of leverage:
+
+"How to calculate your liquidation price" (with live examples)
+"5 rules to survive futures trading" (isolated margin, stop-losses, etc.)
+"Spot vs. futures: Which is safer for beginners?"
+💡 Your Call!
+Just say:
+
+"Explain funding rates"
+"Show me liquidation math"
+"Give me safety tips"
+Or ask your own question
+I’m here to make complex topics simple—no judgment, just clarity. 🙌
   <!-- ===== Features ===== -->
   <section id="tinh-nang">
     <div class="container">
