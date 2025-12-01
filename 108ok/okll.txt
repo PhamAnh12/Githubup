@@ -198,7 +198,7 @@ okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
           </div>
           <div class="card">
             <div class="kpi">SEO+ <small>chuẩn</small></div>
-            <div class="muted">Thân thiện Google</div>
+            <div class="muted">Thân thiện Goffdddddffogle</div>
           </div>
         </div>
       </div>
