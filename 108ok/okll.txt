@@ -68,7 +68,7 @@ okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
     .menu-toggle{ display:none; }
 
     /* ===== Hero ===== */
-    .hero{
+    .hero{dddddddddddddd
       position: relative; overflow:hidden; padding: 90px 0 70px; background: radial-gradient(80% 100% at 50% -10%, color-mix(in srgb, var(--brand) 22%, transparent), transparent 70%),
                  radial-gradient(60% 80% at 100% 0%, color-mix(in srgb, var(--brand-2) 18%, transparent), transparent 60%);
     }
