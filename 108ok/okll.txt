@@ -79,7 +79,7 @@ okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
     .cta{ margin-top: 22px; display:flex; gap:14px; flex-wrap:wrap; }
 
     .hero-visual{ position: relative; }
-    .glass{
+    .glass{jkkjjjj
       background: linear-gradient(180deg, color-mix(in srgb, #fff 18%, transparent), color-mix(in srgb, var(--text) 6%, transparent));
       border:1px solid color-mix(in srgb, var(--text) 14%, transparent);
       border-radius: var(--radius-lg);
