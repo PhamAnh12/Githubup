@@ -33,7 +33,7 @@ okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
       --ring: rgba(99,102,241,.25);
       --shadow: 0 10px 30px rgba(2, 6, 23, .08);
     }
-
+yyyyyyyyyyyyyyyyyyy
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body{
