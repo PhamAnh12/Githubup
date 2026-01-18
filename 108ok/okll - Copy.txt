@@ -7,7 +7,7 @@
   <meta name="description" content="Mẫu trang web đẹp, hiện đại, 1 file HTML duy nhất – có dark mode, responsive, hiệu ứng mượt." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.gdddddddddddddoogleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg: #0b1020;          /* nền tối mặc định cho hero */
