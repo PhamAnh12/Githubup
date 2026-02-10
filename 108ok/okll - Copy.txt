@@ -67,7 +67,7 @@ yyyyyyyyyyyyyyyyyyy
     .theme-toggle, .menu-toggle{ border:none; background: color-mix(in srgb, var(--text) 8%, transparent); padding:10px; border-radius:12px; cursor:pointer; color:var(--muted); display:inline-flex; align-items:center; }
     .menu-toggle{ display:none; }
 
-    /* ===== Hero ===== */
+    /* ===== Hero ===== */fjs hi xin chao hihihi
     .hero{
       position: relative; overflow:hidden; padding: 90px 0 70px; background: radial-gradient(80% 100% at 50% -10%, color-mix(in srgb, var(--brand) 22%, transparent), transparent 70%),
                  radial-gradient(60% 80% at 100% 0%, color-mix(in srgb, var(--brand-2) 18%, transparent), transparent 60%);
