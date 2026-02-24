@@ -380,3 +380,7 @@ ok hâiai
   </script>
 </body>
 </html>
+
+Specific API Endpoints: List the exact API endpoints used for placing orders, retrieving quotes, checking order status, and accessing market data. Version numbers of the APIs are essential, outlining the protocol's ability to adapt to API changes.
+Data Formats: Precise definition of the data formats (e.g., JSON, Protobuf) used for all API calls and responses.
+Authentication and Authorization: Detailed explanation of how the protocol authenticates and authorizes its API requests. This must include details about API keys, signing mechanisms (e.g.,
