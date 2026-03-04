@@ -1,0 +1,2 @@
+Compute miner net‑revenue = (block rewards + transaction fees) × BTC price − estimated electricity cost (often expressed in USD per BTC).
+Compute miner net‑revenue = (block rewards + transaction fees) × BTC price − estimated electricity cost (often expressed in USD per BTC).
