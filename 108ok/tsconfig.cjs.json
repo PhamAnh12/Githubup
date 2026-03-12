@@ -4,6 +4,8 @@
     "module": "CommonJS",
     "moduleResolution": "Node",
     "outDir": "../lib/cjs/puppeteer"
+    "module": "CommonJS",
+    "module": "CommonJS",
   },
   "references": [{"path": "../third_party/tsconfig.cjs.json"}]
 }
