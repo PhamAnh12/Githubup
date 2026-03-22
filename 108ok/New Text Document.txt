@@ -14,4 +14,7 @@ Staked‑supply growth rate – Shows long‑term commitment versus short‑term
 ts, and financial regulations (SEC, CFTC) already apply to AI. By adopting best practices around bias, transparency, and data handling, companies reduce their vulnerability to enforcement actions based on these established laws.
 Existing Laws Still Apply: As noted, the EO emphasizes that existing consumer protection (FTC), civil rights, and financial regulations (SEC, CFTC) already apply to AI. By adopting best practices around bias, transparency, and data handling, companies reduce their vulnerability to enforcement actions based on these established laws.
 Existing Laws Still Apply: As noted, the EO emphasizes that existing consumer protection (FTC), civil rights, and financial regulations (SEC, CFTC) already apply to AI. By adopting best practices around bias, transparency, and data handling, companies reduce their vulnerability to enforcement actions based on these established laws.
-When a contributor later queries the shared dataset, the system first deducts any accrued DCCs before charging HUB tokens. If DCC balance exceeds the query cost, the query becomes free.
+When a contributor later queries the shared dataset, the system first deducts any accrued DCCs before charging HUB
+Balance‑change % on each exchange; a consistent negative change on the top 3‑4 exchanges carries the most weight.
+Correlation with other on‑chain metrics (e.g., large‑wallet transfers, DeFi vault deposits) to confirm the move isn’t just a short‑term arbitrage or liquidation event.
+ tokens. If DCC balance exceeds the query cost, the query becomes free.
