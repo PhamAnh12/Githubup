@@ -18,3 +18,5 @@ When a contributor later queries the shared dataset, the system first deducts an
 Balance‑change % on each exchange; a consistent negative change on the top 3‑4 exchanges carries the most weight.
 Correlation with other on‑chain metrics (e.g., large‑wallet transfers, DeFi vault deposits) to confirm the move isn’t just a short‑term arbitrage or liquidation event.
  tokens. If DCC balance exceeds the query cost, the query becomes free.
+ If big tech pushes more AI processing to edge devices, what kind of app becomes possible that wasn’t before?
+ If big tech pushes more AI processing to edge devices, what kind of app becomes possible that wasn’t before? If big tech pushes more AI processing to edge devices, what kind of app becomes possible that wasn’t before?
