@@ -18,3 +18,5 @@ Correlation with other on‑chain metrics (e.g., large‑wallet transfers, DeFi 
  tokens. If DCC balance exceeds the query cost, the query becomes free.
  If big tech pushes more AI processing to edge devices, what kind of app becomes possible that wasn’t before?
  If big tech pushes more AI processing to edge devices, what kind of app becomes possible that wasn’t before? If big tech pushes more AI processing to edge devices, what kind of app becomes possible that wasn’t before?
+Walk you through sending a payment to a supplier
+Walk you through sending a payment to a supplier
