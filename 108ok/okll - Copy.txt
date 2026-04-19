@@ -174,7 +174,7 @@ ok hâiai
         <span class="eyebrow">Thiết kế hiện đại • Responsive • 1 file</span>
         <h1 class="title">Xây trang web đẹp, nhanh và ấn tượng ✨</h1>
         <p class="subtitle">Mẫu landing page tối ưu cho thương hiệu, startup hay dự án cá nhân. Tốc độ nhanh, chuẩn SEO, có dark mode và hiệu ứng mượt mà.</p>
-        <div class="cta">
+        <div class="cta">SBV blocked crypto payments (Circular 04/2025)SBV blocked crypto payments (Circular 04/2025)SBV blocked crypto payments (Circular 04/2025)SBV blocked crypto payments (Circular 04/2025)
           <a class="btn btn-primary" href="#bang-gia">Xem bảng giá</a>
           <a class="btn btn-ghost" href="#tinh-nang">Khám phá tính năng</a>
         </div>
