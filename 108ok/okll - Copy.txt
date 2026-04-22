@@ -114,7 +114,7 @@ ok hâiai
     .badge{ position:absolute; top:12px; right:12px; font-size:12px; padding:6px 10px; border-radius: 999px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#fff; box-shadow: 0 10px 20px var(--ring); }
     .list{ display:grid; gap:10px; margin: 14px 0 18px; color: var(--muted); }
 
-    /* Contact */
+    /* Contact *Compare it to historical examples where outside actors have tried to impose or extend cease‑fires without the consent of all belligerents.Compare it to historical examples where outside actors have tried to impose or extend cease‑fires without the consent of all belligerents.Compare it to historical examples where outside actors have tried to impose or extend cease‑fires without the consent of all belligerents.Compare it to historical examples where outside actors have tried to impose or extend cease‑fires without the consent of all belligerents./
     form{ display:grid; gap:12px; margin-top: 24px; }
     input, textarea{ width:100%; padding:12px 14px; border-radius: 12px; border:1px solid color-mix(in srgb, var(--text) 14%, transparent); background: color-mix(in srgb, var(--text) 6%, transparent); color: var(--text); outline: none; }
     input:focus, textarea:focus{ border-color: color-mix(in srgb, var(--brand) 50%, var(--text)); box-shadow: 0 0 0 8px var(--ring); }
@@ -127,9 +127,9 @@ ok hâiai
     .float .card{ animation: floaty 5s ease-in-out infinite; }
     .float .card:nth-child(2){ animation-delay: .8s }
     .float .card:nth-child(3){ animation-delay: 1.6s }
-
+Compare it to historical examples where outside actors have tried to impose or extend cease‑fires without the consent of all belligerents.
     /* Responsive */
-    @media (max-width: 960px){
+    @media (max-width: 960px){Compare it to historical examples where outside actors have tried to impose or extend cease‑fires without the consent of all belligerents.
       .hero .grid, .showcase{ grid-template-columns: 1fr; }
       .features{ grid-template-columns: repeat(2, 1fr); }
       .pricing{ grid-template-columns: 1fr; }
